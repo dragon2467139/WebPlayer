@@ -1,0 +1,162 @@
+#container {
+    background-color: #465659;
+    width: 350px;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 0px;
+    color: #D5E3E6;
+    font-size: 0.8em;
+    /* border:2px solid #ffffff; */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  body {
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+/*   
+  html, body, #main, #lyricContainer {
+    height: 100%;
+  } */
+  
+  #menu {
+    text-align: center;
+    /* height: 100px; */
+  }
+
+  #main {
+    display: flex;
+    flex-grow: 1;
+    height: 500px;
+  }
+
+  #lyricContainer {
+    flex-grow: 1;
+    overflow: auto;
+  }
+
+  #leftPanel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #slideContainer {
+    text-align: justify;
+    flex-grow: 1;
+    overflow: auto;
+    width: 350px;
+    margin: 0px 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  #lyricContainer ul li {
+    /* animation:  duration timing-function delay iteration-count direction fill-mode; */
+    text-align: center;
+    padding: 30px;
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  div {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  #wrapper {
+    padding: 10px;
+  }
+/*   
+  #controls div, #timeInfo div {
+    display: table-cell;
+    vertical-align:middle;
+  } */
+
+  #controls {
+    display: flex;
+    align-items: center;
+  }
+
+  #controls div:nth-last-child(1) {
+    flex-grow: 1;
+  }
+  
+  #volumeSlider {
+    height:10px;
+    background-color: #DBDBDB;
+  }
+  
+  #volumeSlider div {
+    height:inherit;
+  }
+  
+  #timeInfo {
+    display: flex;
+    align-items: center;
+    margin: 5px 0px;
+  }
+  
+  #timeBar {
+    width:250px;
+    height:10px;
+    background-color: #DBDBDB;
+  }
+  
+  #timeBar div {
+    height:inherit;
+  }
+  
+  #timeText {
+    flex-grow: 1;
+    text-align: end;
+  }
+
+  #volumeIcon{
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 15px;
+  }
+
+  #volumeIcon img {
+    width: 24px;
+  }
+  
+  #activeTrack{
+    color: red;
+  }
+
+  .filler {
+    width: inherit;
+    background-color: #BAB9B8;
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8C8A89;
+    padding: 2px;
+    border-radius: 32px;
+    width:32px;
+    height:32px;
+    cursor: pointer;
+  }
+  
+  .button img {
+    width:16px;
+    /* margin-left: 8px;
+    margin-top:4px; */
+  }

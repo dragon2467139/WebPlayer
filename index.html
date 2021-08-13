@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+  <title>WebPlayer</title>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div id="menu">
+    <a href="https://ferrari1732.github.io/">Reference</a>
+  </div>
+  <div id="main">
+    <div id="leftPanel">
+      <div id="slideContainer">-- Playlist Not Found --</div>
+      <div id="container">
+        <audio id="audio">
+          <source id="sourceMP3" src="" type="audio/ogg">
+        </audio>
+
+        <div id="wrapper">
+          <!-- Track information-->
+          <div id="trackInfo">
+            <div id="titleText">.</div>
+            <div id="albumText">.</div>
+            <div id="artistText">.</div>
+          </div>
+
+          <div id="timeInfo">
+            <div>
+              <div id="timeBar">
+                <div class="filler"></div>
+              </div>
+            </div>
+            <div id="timeText"></div>
+          </div>
+
+          <div id="log"></div>
+
+          <!-- Controls -->
+          <div id="controls">
+            <div class="button" id="playBtn"><img src="icons/32/play-32.png"></div>
+            <div class="button" id="randomBtn"><img src="icons/32/random-32.png"></div>
+            <div class="button" id="previousBtn"><img src="icons/32/rewind-32.png"></div>
+            <div class="button" id="nextBtn"><img src="icons/32/forward-32.png"></div>
+            <div class="button" id="repeatBtn"><img src="icons/32/repeat-32_false.png"></div>
+            <div id="volumeIcon"><img src="icons/32/volume-32.png"></div>
+            <div>
+              <div id="volumeSlider">
+                <div class="filler"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="lyricContainer">-- Lyric Not Found --</div>
+  </div>
+
+  <script src="scripts/sliderfy.js"></script>
+  <script src="scripts/load.js"></script>
+</body>
+
+</html>
