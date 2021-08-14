@@ -64,6 +64,10 @@
     padding: 0;
   }
 
+  #slideContainer ul li {
+    padding: 10px;
+  }
+
   #lyricContainer ul li {
     /* animation:  duration timing-function delay iteration-count direction fill-mode; */
     display: inline-flex;
