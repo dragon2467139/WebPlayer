@@ -252,19 +252,30 @@ function loadLyric(lrcObj, lrcPath, offset = (playlist.getActive().offset == nul
     var newDOM = '<ul>';
     lrcObj.timecodes = [];
     lrcObj.lines = [];
-    lrcObj.index = 0;
-    data = data.split(/[\[\]]/);
-    for(var i = 0; i <= data.length/2-1; i++){
-      let timecode = data[2*i+1].split(/[\:\.]/);
-      lrcObj.timecodes.push(timecode[0]*60 + timecode[1]*1 + timecode[2]*0.01 + offset);
-      lrcObj.lines.push(data[2*i+2]);
-      newDOM += '<li id="lrc_' + i + '">' + lrcObj.lines[i] + '</li>';
+    if(data[0] == '['){
+      lrcObj.index = 0;
+      data = data.split(/[\[\]]/);
+      for(var i = 0; i <= data.length/2-1; i++){
+        let timecode = data[2*i+1].split(/[\:\.]/);
+        lrcObj.timecodes.push(timecode[0]*60 + timecode[1]*1 + timecode[2]*0.01 + offset);
+        lrcObj.lines.push(data[2*i+2]);
+        newDOM += '<li id="lrc_' + i + '">' + lrcObj.lines[i] + '</li>';
+      }
+      newDOM += '</ul>';
+      document.getElementById("lyricContainer").innerHTML = newDOM;
+      document.getElementById("lrc_0").style["color"] = "red";
+      lrcObj.timecodes[0] = 0;
+      // console.log(lrcObj.timecodes);
+    } else {
+      lrcObj.index = -1; // Stands for static lyric.
+      data = data.split('\n');
+      for(var i = 0; i < data.length; i++){
+        lrcObj.lines.push(data[i]);
+        newDOM += '<li id="lrc_' + i + '">' + lrcObj.lines[i] + '</li>';
+      }
+      newDOM += '</ul>';
+      document.getElementById("lyricContainer").innerHTML = newDOM;
     }
-    newDOM += '</ul>';
-    document.getElementById("lyricContainer").innerHTML = newDOM;
-    document.getElementById("lrc_0").style["color"] = "red";
-    lrcObj.timecodes[0] = 0;
-    console.log(lrcObj.timecodes);
   });
 };
 
