@@ -49,9 +49,6 @@ var lrcObj = {};
 lrcObj.timecodes = [];
 lrcObj.lines = [];
 lrcObj.index = 0;
-lrcObj.getPrevTimecode = function(i){
-  return (i==0) ? this.timecodes[i] : this.timecodes[i-1];
-}
 lrcObj.getCurrTimecode = function(i){
   return this.timecodes[i];
 }
@@ -164,6 +161,7 @@ timeUpdateCallback = function(){
 audio.addEventListener("timeupdate",timeUpdateCallback,false);
 // Update lyric on time
 updateLyric = function(){
+  console.log(lrcObj.index)
   if(audio.currentTime < lrcObj.getCurrTimecode(lrcObj.index))
   {
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "";
@@ -247,7 +245,7 @@ function showSongList(){
   return str;
 }
 
-function loadLyric(lrcObj, lrcPath) {
+function loadLyric(lrcObj, lrcPath, offset = (playlist.getActive().offset == null) ? 0 : playlist.getActive().offset) {
   fetch(lrcPath)
   .then(response => response.text())
   .then(data => {
@@ -258,12 +256,18 @@ function loadLyric(lrcObj, lrcPath) {
     data = data.split(/[\[\]]/);
     for(var i = 0; i <= data.length/2-1; i++){
       let timecode = data[2*i+1].split(/[\:\.]/);
-      lrcObj.timecodes.push(timecode[0]*60 + timecode[1]*1 + timecode[2]*0.01);
+      lrcObj.timecodes.push(timecode[0]*60 + timecode[1]*1 + timecode[2]*0.01 + offset);
       lrcObj.lines.push(data[2*i+2]);
       newDOM += '<li id="lrc_' + i + '">' + lrcObj.lines[i] + '</li>';
     }
     newDOM += '</ul>';
     document.getElementById("lyricContainer").innerHTML = newDOM;
     document.getElementById("lrc_0").style["color"] = "red";
+    lrcObj.timecodes[0] = 0;
+    console.log(lrcObj.timecodes);
   });
 };
+
+  function offset(offset) {
+    loadLyric(lrcObj, playlist.getActive().lrc, offset);
+  }
