@@ -58,16 +58,28 @@
   }
 
   ul {
+    display: flex;
+    flex-direction: column;
     list-style: none;
     padding: 0;
   }
 
   #lyricContainer ul li {
     /* animation:  duration timing-function delay iteration-count direction fill-mode; */
+    display: inline-flex;
+    flex-grow: 1;
+    justify-content: center;
     text-align: center;
     padding: 30px;
     font-size: 30px;
     font-weight: 800;
+  }
+
+  #focus {
+    width: 0;
+    padding: 0;
+    border: 0;
+    margin: 0;
   }
 
   div {

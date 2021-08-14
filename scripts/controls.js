@@ -165,16 +165,22 @@ updateLyric = function(){
   if(audio.currentTime < lrcObj.getCurrTimecode(lrcObj.index))
   {
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "";
+    document.getElementById("focus").remove();
     do{
       lrcObj.index--;
     }while(audio.currentTime < lrcObj.getCurrTimecode(lrcObj.index))
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "red";
+    document.getElementById("lrc_"+lrcObj.index).appendChild(document.createElement("button")).setAttribute("id", "focus");
+    document.getElementById("focus").focus({preventScroll:false});
   }else if(audio.currentTime > lrcObj.getNextTimecode(lrcObj.index)) {
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "";
+    document.getElementById("focus").remove();
     do{
       lrcObj.index++;
     }while(audio.currentTime > lrcObj.getNextTimecode(lrcObj.index))
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "red";
+    document.getElementById("lrc_"+lrcObj.index).appendChild(document.createElement("button")).setAttribute("id", "focus");
+    document.getElementById("focus").focus({preventScroll:false});
   }else{
     return;
   }
@@ -264,6 +270,7 @@ function loadLyric(lrcObj, lrcPath, offset = (playlist.getActive().offset == nul
       newDOM += '</ul>';
       document.getElementById("lyricContainer").innerHTML = newDOM;
       document.getElementById("lrc_0").style["color"] = "red";
+      document.getElementById("lrc_0").appendChild(document.createElement("button")).setAttribute("id", "focus");
       lrcObj.timecodes[0] = 0;
       // console.log(lrcObj.timecodes);
     } else {
