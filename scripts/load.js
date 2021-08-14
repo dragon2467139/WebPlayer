@@ -6,11 +6,14 @@ loadPlaylist(path);
 
 function loadPlaylist(path) {
     var script = document.createElement('script');
-    var scriptCtrl = document.createElement('script');
     
+    script.onload = function() {
+        var scriptCtrl = document.createElement('script'); 
+        scriptCtrl.src = "scripts/controls.js"
+        document.head.appendChild(scriptCtrl);
+    };
+
     script.src = path;
-    scriptCtrl.src = "scripts/controls.js"
   
     document.head.appendChild(script);
-    document.head.appendChild(scriptCtrl);
   };
