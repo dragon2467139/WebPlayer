@@ -116,6 +116,14 @@ previousBtn.addEventListener("click",function(){
   loadNewTrack(playlist.getActive().src);
 });
 
+// Click list
+function switchSong(newActive) {
+  playlist.activeTrack = newActive;
+  document.getElementById("slideContainer").innerHTML = showSongList();
+  loadLyric(lrcObj, playlist.getActive().lrc);
+  loadNewTrack(playlist.getActive().src);
+}
+
 //Repeat button
 repeatBtn.addEventListener("click",function(){
 	if (brepeat == false)
@@ -243,7 +251,7 @@ function showSongList(){
     if (i == playlist.activeTrack) {
       str += '<li id="activeTrack">' + l.name + '</li>'
     } else {
-      str += '<li>' + l.name + '</li>'
+      str += '<li onclick="switchSong(' + i + ')">' + l.name + '</li>'
     }
     i += 1
   });
