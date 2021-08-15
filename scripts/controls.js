@@ -261,9 +261,10 @@ function loadLyric(lrcObj, lrcPath, offset = (playlist.getActive().offset == nul
     if(data[0] == '['){
       lrcObj.index = 0;
       data = data.split(/[\[\]]/);
+      console.log(data);
       for(var i = 0; i <= data.length/2-1; i++){
-        let timecode = data[2*i+1].split(/[\:\.]/);
-        lrcObj.timecodes.push(timecode[0]*60 + timecode[1]*1 + timecode[2]*0.01 + offset);
+        let timecode = data[2*i+1].split(/[\:]/);
+        lrcObj.timecodes.push(timecode[0]*60 + timecode[1]*1 + offset);
         lrcObj.lines.push(data[2*i+2]);
         newDOM += '<li id="lrc_' + i + '">' + lrcObj.lines[i] + '</li>';
       }
