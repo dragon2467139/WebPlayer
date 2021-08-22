@@ -179,7 +179,10 @@ updateLyric = function(){
     }while(audio.currentTime < lrcObj.getCurrTimecode(lrcObj.index))
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "red";
     document.getElementById("lrc_"+lrcObj.index).appendChild(document.createElement("button")).setAttribute("id", "focus");
+    document.getElementById("lrc_before").style["height"] = "100vh";
+    document.getElementById("lrc_before").focus({preventScroll:false});
     document.getElementById("focus").focus({preventScroll:false});
+    document.getElementById("lrc_before").style["height"] = "";
   }else if(audio.currentTime > lrcObj.getNextTimecode(lrcObj.index)) {
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "";
     document.getElementById("focus").remove();
@@ -188,7 +191,10 @@ updateLyric = function(){
     }while(audio.currentTime > lrcObj.getNextTimecode(lrcObj.index))
     document.getElementById("lrc_"+lrcObj.index).style["color"] = "red";
     document.getElementById("lrc_"+lrcObj.index).appendChild(document.createElement("button")).setAttribute("id", "focus");
+    document.getElementById("lrc_before").style["height"] = "100vh"
+    document.getElementById("lrc_before").focus({preventScroll:false});
     document.getElementById("focus").focus({preventScroll:false});
+    document.getElementById("lrc_before").style["height"] = "";
   }else{
     return;
   }
@@ -267,6 +273,7 @@ function loadLyric(lrcObj, lrcPath, offset = (playlist.getActive().offset == nul
     lrcObj.timecodes = [];
     lrcObj.lines = [];
     if(data[0] == '['){
+      newDOM += '<button id="lrc_before"></button>';
       lrcObj.index = 0;
       data = data.split(/[\[\]]/);
       console.log(data);
@@ -276,7 +283,7 @@ function loadLyric(lrcObj, lrcPath, offset = (playlist.getActive().offset == nul
         lrcObj.lines.push(data[2*i+2]);
         newDOM += '<li id="lrc_' + i + '">' + lrcObj.lines[i] + '</li>';
       }
-      newDOM += '</ul>';
+      newDOM += '<li id="lrc_after"></li></ul>';
       document.getElementById("lyricContainer").innerHTML = newDOM;
       document.getElementById("lrc_0").style["color"] = "red";
       document.getElementById("lrc_0").appendChild(document.createElement("button")).setAttribute("id", "focus");

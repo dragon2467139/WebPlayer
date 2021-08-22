@@ -79,6 +79,14 @@
     font-weight: 800;
   }
 
+  #lrc_before, #lrc_after {
+    height: 50vh;
+    width: 0;
+    padding: 0;
+    border: 0;
+    margin: 0;
+  }
+
   #focus {
     width: 0;
     padding: 0;
